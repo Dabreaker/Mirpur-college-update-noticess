@@ -4,21 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mirpur College Updates & Notices</title>
-    <!-- Inter Font for Clean Minimalist Look -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- Inter Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
     
     <style>
-        :root {
-            --bg: #09090b;
-            --surface: #121215;
-            --surface-hover: #18181b;
-            --border: rgba(255, 255, 255, 0.08);
-            --border-hover: rgba(255, 255, 255, 0.2);
-            --text-primary: #ededed;
-            --text-secondary: #88888d;
-            --accent: #ffffff;
-        }
-
         * {
             box-sizing: border-box;
             margin: 0;
@@ -26,155 +15,94 @@
         }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background-color: var(--bg);
-            color: var(--text-primary);
+            font-family: 'Inter', sans-serif;
+            background-color: #050505;
+            color: #ffffff;
             min-height: 100vh;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             padding: 24px;
-            -webkit-font-smoothing: antialiased;
-        }
-
-        /* Minimalist Advanced Wrapper */
-        .wrapper {
-            width: 100%;
-            max-width: 480px;
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 20px;
-            padding: 48px 36px;
+            text-align: center;
+            overflow-x: hidden;
             position: relative;
-            overflow: hidden;
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
-            transition: border-color 0.4s ease;
         }
 
-        .wrapper:hover {
-            border-color: var(--border-hover);
-        }
-
-        /* Subtle Ambient Glow Effect */
-        .wrapper::before {
+        /* Sleek Modern Background Grid & Glow Pattern */
+        body::before {
             content: '';
             position: absolute;
             top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, var(--text-primary), transparent);
-            opacity: 0.3;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+                radial-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+            background-size: 40px 40px;
+            background-position: 0 0, 20px 20px;
+            z-index: -2;
         }
 
-        /* Status Indicator Dot */
-        .status-pill {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 0.75rem;
-            font-weight: 500;
-            color: var(--text-secondary);
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            margin-bottom: 24px;
-        }
-
-        .dot {
-            width: 6px;
-            height: 6px;
-            background-color: #10b981;
+        /* Ambient glowing background blur effect */
+        body::after {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.15), rgba(236, 72, 153, 0.1));
+            filter: blur(100px);
             border-radius: 50%;
-            box-shadow: 0 0 8px rgba(16, 185, 129, 0.6);
+            z-index: -1;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
         }
 
-        /* Minimalist Headings */
-        h1 {
-            font-size: 1.65rem;
-            font-weight: 500;
-            letter-spacing: -0.02em;
-            line-height: 1.4;
-            color: var(--text-primary);
-            margin-bottom: 16px;
-        }
-
-        /* Description text */
-        p {
-            font-size: 0.95rem;
-            font-weight: 300;
-            color: var(--text-secondary);
-            line-height: 1.6;
-            margin-bottom: 36px;
-        }
-
-        /* Advanced Minimal Button */
-        .btn-link {
+        /* Layout wrapper */
+        .content-box {
+            max-width: 800px;
             display: flex;
-            align-items: center;
-            justify-content: space-between;
-            background: var(--surface-hover);
-            border: 1px solid var(--border);
-            color: var(--text-primary);
+            flex-direction: column;
+            gap: 24px;
+            z-index: 1;
+        }
+
+        /* Big Centered Main Text */
+        h1 {
+            font-size: clamp(2rem, 5vw, 4rem);
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            line-height: 1.2;
+            color: #ededed;
+        }
+
+        /* Link/Text styling */
+        .real-link {
+            font-size: clamp(1rem, 2vw, 1.35rem);
+            font-weight: 600;
+            color: #a1a1aa;
             text-decoration: none;
-            padding: 16px 20px;
-            border-radius: 12px;
-            font-size: 0.9rem;
-            font-weight: 500;
-            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: all 0.25s ease;
+            display: inline-block;
         }
 
-        .btn-link:hover {
-            background: #202025;
-            border-color: var(--text-primary);
+        .real-link:hover {
+            color: #ffffff;
             transform: translateY(-2px);
-        }
-
-        .btn-link svg {
-            width: 16px;
-            height: 16px;
-            stroke: currentColor;
-            stroke-width: 2;
-            fill: none;
-            transition: transform 0.25s ease;
-        }
-
-        .btn-link:hover svg {
-            transform: translate(2px, -2px);
-        }
-
-        /* Minimal Footer info */
-        .footer {
-            margin-top: 32px;
-            font-size: 0.8rem;
-            color: #55555b;
-            text-align: center;
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
         }
     </style>
 </head>
 <body>
 
-    <div class="wrapper">
-        <!-- Status -->
-        <div class="status-pill">
-            <span class="dot"></span> System Live
-        </div>
-
-        <!-- Main Title -->
+    <div class="content-box">
         <h1>Ja gia putki mara bainchod 🖕🖕🖕</h1>
-
-        <!-- Subtext -->
-        <p>Real link eikhane - Mirpur College Updates & Notices</p>
-
-        <!-- Minimal Navigation Action -->
-        <a href="Https://mirpur-college-updates-notices.vercel.app/" target="_blank" class="btn-link">
-            <span>Open Notice Portal</span>
-            <svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+        <a href="Https://mirpur-college-updates-notices.vercel.app/" target="_blank" class="real-link">
+            Real link eikhane -Mirpur College Updates & Notices
         </a>
-
-        <div class="footer">
-            Secure Redirection Portal
-        </div>
     </div>
 
 </body>
